@@ -12,33 +12,42 @@ public class CalculatorApp {
 	}
 
 	public void calculate() {
-		System.out.println("Enter number 1");
-		int num1 = scan.nextInt();
-
-		System.out.println("Enter number 2");
-		int num2 = scan.nextInt();
-
-		System.out.println("Enter operand");
-		String o = scan.next();
-
-		int ans = 0;
-		if (o.equals("+"))
-			ans = num1 + num2;
-
-		if (o.equals("-")) {
-			ans = (num1 > num2) ? num1 - num2 : num2 - num1;
+		try {	
+			System.out.println("Enter number 1");
+			int num1 = scan.nextInt();
+	
+			System.out.println("Enter number 2");
+			int num2 = scan.nextInt();
+	
+			System.out.println("Enter operand");
+			String o = scan.next();
+	
+			int ans = 0;
+			if (o.equals("+"))
+				ans = num1 + num2;
+	
+			else if (o.equals("-")) {
+				ans = (num1 > num2) ? num1 - num2 : num2 - num1;
+			}
+	
+			else if (o.equals("*"))
+				ans = num1 * num2;
+	
+			else if (o.equals("/"))
+				ans = num1 / num2;
+	
+			else if (o.equals("%"))
+				ans = num1 % num2;
+			
+			else
+				throw new Exception ("The operand must be from + - * / %. Try again.");
+	
+			System.out.println("Answer is " + ans);
 		}
-
-		if (o.equals("*"))
-			ans = num1 * num2;
-
-		if (o.equals("/"))
-			ans = num1 / num2;
-
-		if (o.equals("%"))
-			ans = num1 % num2;
-
-		System.out.println("Answer is " + ans);
+		
+		catch(Exception e) {
+			System.out.println(e);
+		}
 
 		CalculatorApp obj = new CalculatorApp();
 		boolean result = obj.movingForward();
